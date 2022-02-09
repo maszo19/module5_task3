@@ -29,5 +29,13 @@ def create_contacts(int):
 
 
 contacts = create_contacts(5)
-for card in contacts:
+sorted_by_name = sorted(contacts, key=lambda contact: contact.first_name)
+sorted_by_surname = sorted(contacts, key=lambda contact: contact.last_name)
+
+print("\nMy contacts sorted by first name:")
+for card in sorted_by_name:
+    print(card)
+
+print("\nMy contacts sorted by last name:")
+for card in sorted_by_surname:
     print(card)
