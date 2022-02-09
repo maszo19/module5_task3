@@ -12,6 +12,10 @@ class BusinessCard:
     def __str__(self):
         return f"{self.first_name} {self.last_name} <{self.email}>"
 
+    @property
+    def name_len(self):
+        return len(self.first_name + " " + self.last_name)
+
     def contact(self):
         print(f"Contacting {self.first_name} {self.last_name}, the {self.position}: {self.email}")
 
@@ -34,6 +38,7 @@ def create_contacts(int):
 contacts = create_contacts(5)
 for card in contacts:
     card.contact()
+    print(f"The name is {card.name_len} chars long.")
 
 sorted_by_name = sorted(contacts, key=lambda contact: contact.first_name)
 sorted_by_surname = sorted(contacts, key=lambda contact: contact.last_name)
