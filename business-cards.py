@@ -12,6 +12,9 @@ class BusinessCard:
     def __str__(self):
         return f"{self.first_name} {self.last_name} <{self.email}>"
 
+    def contact(self):
+        print(f"Contacting {self.first_name} {self.last_name}, the {self.position}: {self.email}")
+
 
 def create_contacts(int):
     faker = Faker()
@@ -23,12 +26,15 @@ def create_contacts(int):
         job = faker.job()
         domain = faker.free_email_domain()
         email = f"{fname.lower()}.{lname.lower()}@{domain}"
-        contact = BusinessCard(first_name=fname, last_name=lname, company=com, position=job, email=email)
+        contact = BusinessCard(first_name=fname, last_name=lname, company=com, position=job.lower(), email=email)
         list.append(contact)
     return list
 
 
 contacts = create_contacts(5)
+for card in contacts:
+    card.contact()
+
 sorted_by_name = sorted(contacts, key=lambda contact: contact.first_name)
 sorted_by_surname = sorted(contacts, key=lambda contact: contact.last_name)
 
